@@ -1,6 +1,7 @@
 # Added snapshots of both the tables
 
-<img width="1280" alt="Screenshot 2023-10-07 at 7 08 19 PM" src="https://github.com/shivali1507/Wine-Data-Set/assets/139458170/975251af-5fd3-4b05-b93b-f4970536cf1e">
+<img width="972" alt="Screenshot 2023-10-10 at 12 21 54 AM" src="https://github.com/shivali1507/Wine-Data-Set/assets/139458170/c4a98f29-b3b7-4cd7-bb9d-3e76c32d8bdf">
+
 
 # Getting Started with Create React App
 
