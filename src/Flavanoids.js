@@ -49,13 +49,29 @@ function Flavanoids({data}) {
 
 
   const calculateMode = () => {
-    const mode = Array.from({ length: classes }, () => 0);
+    const mode = Array.from({ length: classes }, () => []);
 
     data.forEach((item) => {
-      mode[item.Alcohol - 1]++;
+      mode[item.Alcohol - 1].push(item.Flavanoids);
     });
 
-    return mode;
+    const modeValues = [];
+    for(let i = 0; i < classes; i++){
+      const frequency = {};
+
+      mode[i].forEach(value =>{
+        frequency[value] = (frequency[value] || 0) + 1;
+      });
+
+      let maxFrequency = 0;
+      for (const value in frequency) {
+          if (frequency[value] > maxFrequency) {
+              maxFrequency = value;
+          } 
+    }
+    modeValues.push(maxFrequency);
+    }
+    return modeValues;
   };
 
   const means = calculateMean();

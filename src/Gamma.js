@@ -59,13 +59,29 @@ function Gamma({ data }) {
 
 
   const calculateMode = () => {
-    const mode = Array.from({ length: classes }, () => 0);
+    const mode = Array.from({ length: classes }, () => []);
 
     gammaData.forEach((item) => {
-      mode[item.Alcohol - 1]++;
+      mode[item.Alcohol - 1].push(item.Gamma);
     });
 
-    return mode;
+    const modeValues = [];
+    for(let i = 0; i < classes; i++){
+      const frequency = {};
+
+      mode[i].forEach(value =>{
+        frequency[value] = (frequency[value] || 0) + 1;
+      });
+
+      let maxFrequency = 0;
+      for (const value in frequency) {
+          if (frequency[value] > maxFrequency) {
+              maxFrequency = value;
+          } 
+    }
+    modeValues.push(maxFrequency);
+    }
+    return modeValues;
   };
 
   const means = calculateMean();
@@ -104,7 +120,7 @@ function Gamma({ data }) {
           <td>Gamma Mode</td>
           {modes.map((mode, i) => (
             <td key={i} className="cell">
-                {mode !== undefined ? mode : 'N/A'}
+                {mode !== undefined ? parseFloat(mode).toFixed(3) : 'N/A'}
             </td>
           ))}
         </tr>
